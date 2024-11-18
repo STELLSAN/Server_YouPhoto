@@ -1,0 +1,6 @@
+@ServerPhB_HostAddress = http://localhost:5254
+
+GET {{ServerPhB_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
