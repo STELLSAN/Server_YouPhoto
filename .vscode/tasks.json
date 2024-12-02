@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Запустить сервер ServerPhB",
+            "type": "shell",
+            "command": "${workspaceFolder}/ServerPhB/bin/Debug/net8.0/ServerPhB",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
