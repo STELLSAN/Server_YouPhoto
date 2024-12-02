@@ -12,7 +12,7 @@ namespace ServerPhB.Models
             // TODO: Implement this method
         }
 
-        public void SendMessage(Message message){
+        public void SendMessage(){
             // TODO: Implement this method
         }
     }
