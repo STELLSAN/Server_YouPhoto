@@ -1,3 +1,4 @@
+using ServerPhB.Configurations;
 using ServerPhB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Register AppSettings
+builder.Services.Configure<AppSettings>(builder.Configuration);
 
 // Register application services
 builder.Services.AddScoped<OrderService>();
