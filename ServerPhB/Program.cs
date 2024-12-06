@@ -16,6 +16,13 @@ builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<SocketService>();
 builder.Services.AddScoped<AuthenticationService>();
 
+// Configure Kestrel to listen on specific ports and interfaces
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5254); // Listen on port 5254 for HTTP
+    options.ListenAnyIP(7187, listenOptions => listenOptions.UseHttps()); // Listen on port 7187 for HTTPS
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
