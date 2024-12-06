@@ -16,6 +16,18 @@ builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<SocketService>();
 builder.Services.AddScoped<AuthenticationService>();
 
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 // Configure Kestrel to listen on specific ports and interfaces
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -24,6 +36,9 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 var app = builder.Build();
+
+// Use CORS
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
