@@ -32,7 +32,7 @@ builder.Services.AddCors(options =>
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5254); // Listen on port 5254 for HTTP
-    options.ListenAnyIP(7187, listenOptions => listenOptions.UseHttps()); // Listen on port 7187 for HTTPS
+    //options.ListenAnyIP(7187, listenOptions => listenOptions.UseHttps()); // Listen on port 7187 for HTTPS
 });
 
 var app = builder.Build();
@@ -50,6 +50,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
+app.UseRouting();
 app.MapControllers();
+
 
 app.Run();
