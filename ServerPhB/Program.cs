@@ -1,4 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using ServerPhB.Configurations;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using ServerPhB.Data;
 using ServerPhB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +38,10 @@ builder.WebHost.ConfigureKestrel(options =>
     //options.ListenAnyIP(7187, listenOptions => listenOptions.UseHttps()); // Listen on port 7187 for HTTPS
 });
 
+// Configure Entity Framework and PostgreSQL
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultDatabaseConnection")));
+
 var app = builder.Build();
 
 // Use CORS
@@ -49,9 +56,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-
 app.UseRouting();
 app.MapControllers();
-
 
 app.Run();
