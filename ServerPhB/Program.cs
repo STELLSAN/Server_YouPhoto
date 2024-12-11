@@ -16,7 +16,6 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 
 // Register application services
 builder.Services.AddScoped<OrderService>();
-builder.Services.AddScoped<SocketService>();
 builder.Services.AddScoped<AuthenticationService>();
 
 // Configure CORS
