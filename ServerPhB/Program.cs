@@ -3,6 +3,9 @@ using ServerPhB.Configurations;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using ServerPhB.Data;
 using ServerPhB.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,23 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 // Register application services
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<AuthenticationService>();
+
+// Configure JWT Authentication
+var key = Encoding.ASCII.GetBytes("SalonDB");
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
 
 // Configure CORS
 builder.Services.AddCors(options =>
@@ -54,6 +74,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseRouting();
 app.MapControllers();
