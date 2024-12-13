@@ -20,7 +20,7 @@ namespace ServerPhB.Services
         public AuthenticationService(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
-            _secretKey = configuration["Jwt:Key"];
+            _secretKey = configuration["SalonDB"];
         }
 
         public async Task<string> Register(string username, string password, string name, string email, string phone, int role)
