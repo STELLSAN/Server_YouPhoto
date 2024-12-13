@@ -37,9 +37,9 @@ namespace ServerPhB.Services
             {
                 Username = username,
                 PasswordHash = saltedPassword,
-                Name = name,
-                Email = email,
-                Phone = phone,
+                Name = "null",
+                Email = "null",
+                Phone = "null",
                 Role = role
             };
 
