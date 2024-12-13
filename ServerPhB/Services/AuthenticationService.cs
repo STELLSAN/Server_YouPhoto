@@ -56,7 +56,8 @@ namespace ServerPhB.Services
                 return null;
             }
 
-            var saltedPassword = HashPassword(password, user.PasswordHash.Substring(0, 32));
+            var salt = user.PasswordHash.Substring(0, 24);
+            var saltedPassword = HashPassword(password, salt);
             if (user.PasswordHash != saltedPassword)
             {
                 return null;
