@@ -41,7 +41,10 @@ namespace ServerPhB.Tests
             var user = new User
             {
                 Username = "testuser",
-                PasswordHash = _authService.HashPassword("password", _authService.GenerateSalt())
+                PasswordHash = _authService.HashPassword("password", _authService.GenerateSalt()),
+                Email = "testuser@example.com",
+                Name = "Test User",
+                Phone = "1234567890"
             };
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
