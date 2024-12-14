@@ -27,7 +27,7 @@ namespace ServerPhB.Services
         {
             if (await _context.Users.AnyAsync(u => u.Username == username))
             {
-                return null; // Username already exists
+                return null; // Пользователь уже существует
             }
 
             var salt = GenerateSalt();
