@@ -11,16 +11,5 @@ namespace ServerPhB.Models
         public string DeliveryMethodID { get; set; }
         public string Address { get; set; }
 
-        public void Create(Client clientIn){
-            // TODO: Implement this method
-        }
-
-        public void ChangeStatus(string statusIn){
-            // TODO: Implement this method
-        }
-
-        public void TrackStatus(){
-            // TODO: Implement this method
-        }
     }
 }
