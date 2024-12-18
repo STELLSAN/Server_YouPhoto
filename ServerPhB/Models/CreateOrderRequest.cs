@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace ServerPhB.Models
 {
@@ -9,8 +11,8 @@ namespace ServerPhB.Models
         public int Quantity { get; set; }
         public int DecorationOptionID { get; set; }
         public int DeliveryMethodID { get; set; }
-        public string Address { get; set; }
-        public string Comments { get; set; }
+        public string? Address { get; set; } // Allow null values
+        public string? Comments { get; set; } // Allow null values
         public int TotalPrice { get; set; }
     }
 }
