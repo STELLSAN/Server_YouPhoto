@@ -105,7 +105,7 @@ namespace ServerPhB.Controllers
                 var photoPaths = new List<string>();
                 foreach (var photo in request.Photos)
                 {
-                    var filePath = Path.Combine(_environment.WebRootPath, "Assets/User", photo.FileName);
+                    var filePath = Path.Combine(_environment.ContentRootPath, "Assets/User", photo.FileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await photo.CopyToAsync(stream);
