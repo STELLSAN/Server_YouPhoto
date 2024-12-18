@@ -68,7 +68,7 @@ namespace ServerPhB.Services
             return (token, user.Role);
         }
 
-        private string GenerateSalt()
+        internal string GenerateSalt()
         {
             var rng = new RNGCryptoServiceProvider();
             var saltBytes = new byte[16];
@@ -76,7 +76,7 @@ namespace ServerPhB.Services
             return Convert.ToBase64String(saltBytes);
         }
 
-        private string HashPassword(string password, string salt)
+        internal string HashPassword(string password, string salt)
         {
             var sha256 = SHA256.Create();
             var saltedPassword = salt + password;
@@ -85,7 +85,7 @@ namespace ServerPhB.Services
             return salt + Convert.ToBase64String(hashBytes);
         }
 
-        private string GenerateJwtToken(User user)
+        internal string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secretKey);
