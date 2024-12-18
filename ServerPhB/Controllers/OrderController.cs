@@ -62,9 +62,9 @@ namespace ServerPhB.Controllers
                 Status = "Pending",
                 ClientID = clientId,
                 DeliveryMethodID = request.DeliveryMethodID.ToString(),
-                Address = request.Address,
+                Address = string.IsNullOrEmpty(request.Address) ? null : request.Address,
                 DecorationOptionID = request.DecorationOptionID,
-                Comments = request.Comments,
+                Comments = string.IsNullOrEmpty(request.Comments) ? null : request.Comments,
                 TotalPrice = request.TotalPrice,
                 Quantity = request.Quantity,
                 PhotoPaths = photoPaths
