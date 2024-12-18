@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 
 namespace ServerPhB.Models
 {
-    public class Order
+    public class OrderDto
     {
         public int OrderID { get; set; }
         public DateTime DateCreated { get; set; }
@@ -15,6 +14,5 @@ namespace ServerPhB.Models
         public string Comments { get; set; }
         public int TotalPrice { get; set; }
         public int Quantity { get; set; }
-        public List<string> PhotoPaths { get; set; }
     }
 }

@@ -23,11 +23,11 @@ namespace ServerPhB.Services
             _secretKey = configuration["Jwt:Key"];
         }
 
-        public async Task<string> Register(string username, string password, string name, string email, string phone, int role)
+        public async Task<(string token, int role)> Register(string username, string password, string name, string email, string phone, int role)
         {
             if (await _context.Users.AnyAsync(u => u.Username == username))
             {
-                return null; // Пользователь уже существует
+                return (null, 0); // Username already exists
             }
 
             var salt = GenerateSalt();
@@ -45,28 +45,30 @@ namespace ServerPhB.Services
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return GenerateJwtToken(user);
+            var token = GenerateJwtToken(user);
+            return (token, user.Role);
         }
 
-        public async Task<string> Authenticate(string username, string password)
+        public async Task<(string token, int role)> Authenticate(string username, string password)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
             if (user == null)
             {
-                return null;
+                return (null, 0);
             }
 
-            var salt = user.PasswordHash.Substring(0, 24);
+            var salt = user.PasswordHash.Substring(0, 24); // Extract the salt from the stored password hash
             var saltedPassword = HashPassword(password, salt);
             if (user.PasswordHash != saltedPassword)
             {
-                return null;
+                return (null, 0);
             }
 
-            return GenerateJwtToken(user);
+            var token = GenerateJwtToken(user);
+            return (token, user.Role);
         }
 
-        internal string GenerateSalt()
+        private string GenerateSalt()
         {
             var rng = new RNGCryptoServiceProvider();
             var saltBytes = new byte[16];
@@ -74,7 +76,7 @@ namespace ServerPhB.Services
             return Convert.ToBase64String(saltBytes);
         }
 
-        internal string HashPassword(string password, string salt)
+        private string HashPassword(string password, string salt)
         {
             var sha256 = SHA256.Create();
             var saltedPassword = salt + password;
@@ -83,7 +85,7 @@ namespace ServerPhB.Services
             return salt + Convert.ToBase64String(hashBytes);
         }
 
-        internal string GenerateJwtToken(User user)
+        private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secretKey);
