@@ -67,6 +67,7 @@ namespace ServerPhB.Controllers
                 Comments = string.IsNullOrEmpty(request.Comments) ? null : request.Comments,
                 TotalPrice = request.TotalPrice,
                 Quantity = request.Quantity,
+                Format = request.Format,
                 PhotoPaths = photoPaths
             };
 
