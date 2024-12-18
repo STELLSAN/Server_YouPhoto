@@ -41,7 +41,7 @@ namespace ServerPhB.Services
 
         public Order GetOrderById(int orderId)
         {
-            return _context.Orders.Find(orderId);
+            return _context.Orders.FirstOrDefault(o => o.OrderID == orderId);
         }
     }
 }
