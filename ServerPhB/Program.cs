@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ServerPhB.Configurations;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 using ServerPhB.Data;
 using ServerPhB.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

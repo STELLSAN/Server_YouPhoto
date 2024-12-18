@@ -10,6 +10,10 @@ namespace ServerPhB.Models
         public string ClientID { get; set; }
         public string DeliveryMethodID { get; set; }
         public string Address { get; set; }
+        public int DecorationOptionID { get; set; }
+        public string Comments { get; set; }
+        public int TotalPrice { get; set; }
+        public int Quantity { get; set; }
 
     }
 }
