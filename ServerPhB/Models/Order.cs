@@ -15,6 +15,7 @@ namespace ServerPhB.Models
         public string? Comments { get; set; } // Nullable
         public int TotalPrice { get; set; }
         public int Quantity { get; set; }
+        public string Format { get; set; }
         public List<string> PhotoPaths { get; set; }
     }
 }
