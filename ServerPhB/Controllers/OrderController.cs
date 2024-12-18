@@ -99,6 +99,9 @@ namespace ServerPhB.Controllers
             if (request.TotalPrice.HasValue) order.TotalPrice = request.TotalPrice.Value;
             if (request.Quantity.HasValue) order.Quantity = request.Quantity.Value;
 
+            // Ensure DateCreated is in UTC
+            order.DateCreated = DateTime.UtcNow;
+
             // Handle new photo uploads
             if (request.Photos != null && request.Photos.Count > 0)
             {
