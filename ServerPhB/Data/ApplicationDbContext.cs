@@ -13,6 +13,30 @@ namespace ServerPhB.Data
         }
 
         public DbSet<User> Users { get; set; }
-        //public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Seed initial delivery methods
+            modelBuilder.Entity<DeliveryMethod>().HasData(
+                new DeliveryMethod
+                {
+                    DeliveryMethodID = 1,
+                    Name = "Доставка",
+                    Description = "Доставка фотографий курьером.",
+                    Cost = 500
+                },
+                new DeliveryMethod
+                {
+                    DeliveryMethodID = 2,
+                    Name = "Само-вывоз",
+                    Description = "Само-вывоз фотографий из салона вручную.",
+                    Cost = 0
+                }
+            );
+        }
     }
 }
