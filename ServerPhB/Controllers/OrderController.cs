@@ -58,7 +58,7 @@ namespace ServerPhB.Controllers
 
             var order = new Order
             {
-                DateCreated = DateTime.UtcNow,
+                DateCreated = DateTime.UtcNow, // Ensure UTC DateTime
                 Status = "Pending",
                 ClientID = clientId,
                 DeliveryMethodID = request.DeliveryMethodID.ToString(),
