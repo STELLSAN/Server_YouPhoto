@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerPhB.Models;
 using ServerPhB.Services;
@@ -24,6 +25,7 @@ namespace ServerPhB.Controllers
         }
 
         [HttpGet("track-order/{orderId}")]
+        [Authorize]
         public IActionResult TrackOrder(int orderId)
         {
             // TODO: Implement this method
@@ -31,6 +33,7 @@ namespace ServerPhB.Controllers
         }
 
         [HttpGet("view-orders")]
+        [Authorize]
         public IActionResult ViewOrderList()
         {
             // TODO: Implement this method

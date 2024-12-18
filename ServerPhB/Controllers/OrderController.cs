@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerPhB.Models;
 using ServerPhB.Services;
@@ -31,6 +32,7 @@ namespace ServerPhB.Controllers
         }
 
         [HttpGet("track/{orderId}")]
+        [Authorize]
         public IActionResult TrackOrder(int orderId)
         {
             var order = _orderService.TrackOrder(orderId);

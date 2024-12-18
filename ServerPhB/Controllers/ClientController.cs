@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServerPhB.Models;
 using ServerPhB.Services;
@@ -17,6 +18,7 @@ namespace ServerPhB.Controllers
         }
 
         [HttpPost("upload-photo")]
+        [Authorize]
         public IActionResult UploadPhoto([FromBody] Photo photo)
         {
             // TODO: Implement this method
@@ -24,6 +26,7 @@ namespace ServerPhB.Controllers
         }
 
         [HttpPost("create-order")]
+        [Authorize]
         public IActionResult CreateOrder([FromBody] Order order)
         {
             // TODO: Implement this method
@@ -31,6 +34,7 @@ namespace ServerPhB.Controllers
         }
 
         [HttpGet("track-order/{orderId}")]
+        [Authorize]
         public IActionResult TrackOrder(int orderId)
         {
             // TODO: Implement this method
