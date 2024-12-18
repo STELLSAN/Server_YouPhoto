@@ -23,11 +23,11 @@ namespace ServerPhB.Services
             _secretKey = configuration["Jwt:Key"];
         }
 
-        public async Task<string> Register(string username, string password, string name, string email, string phone, int role)
+        public async Task<(string token, int role)> Register(string username, string password, string name, string email, string phone, int role)
         {
             if (await _context.Users.AnyAsync(u => u.Username == username))
             {
-                return null; // Пользователь уже существует
+                return (null, 0); // Username already exists
             }
 
             var salt = GenerateSalt();
@@ -45,25 +45,27 @@ namespace ServerPhB.Services
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return GenerateJwtToken(user);
+            var token = GenerateJwtToken(user);
+            return (token, user.Role);
         }
 
-        public async Task<string> Authenticate(string username, string password)
+        public async Task<(string token, int role)> Authenticate(string username, string password)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
             if (user == null)
             {
-                return null;
+                return (null, 0);
             }
 
-            var salt = user.PasswordHash.Substring(0, 24);
+            var salt = user.PasswordHash.Substring(0, 24); // Extract the salt from the stored password hash
             var saltedPassword = HashPassword(password, salt);
             if (user.PasswordHash != saltedPassword)
             {
-                return null;
+                return (null, 0);
             }
 
-            return GenerateJwtToken(user);
+            var token = GenerateJwtToken(user);
+            return (token, user.Role);
         }
 
         internal string GenerateSalt()
