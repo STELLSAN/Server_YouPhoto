@@ -38,5 +38,16 @@ namespace ServerPhB.Controllers
             }
             return Ok(new { token, role });
         }
+
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
+        {
+            var (token, refreshToken) = await _authenticationService.RefreshToken(request.Token);
+            if (token == null)
+            {
+                return Unauthorized(new { message = "Invalid refresh token" });
+            }
+            return Ok(new { token, refreshToken });
+        }
     }
 }
