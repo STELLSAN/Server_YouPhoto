@@ -39,7 +39,7 @@ namespace ServerPhB.Controllers
         [Authorize]
         public async Task<IActionResult> ViewOrderList()
         {
-            var pendingOrders = await _orderService.GetOrdersByStatus("Pending");
+            var pendingOrders = await _orderService.GetOrdersByStatusExcluding("Done");
 
             var orderDtos = pendingOrders.Select(order => new OrderDto
             {

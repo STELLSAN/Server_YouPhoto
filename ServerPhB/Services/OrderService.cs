@@ -48,5 +48,10 @@ namespace ServerPhB.Services
         {
             return await _context.Orders.Where(o => o.Status == status).ToListAsync();
         }
+
+        public async Task<List<Order>> GetOrdersByStatusExcluding(string status)
+        {
+            return await _context.Orders.Where(o => o.Status != status).ToListAsync();
+        }
     }
 }
