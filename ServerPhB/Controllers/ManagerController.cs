@@ -37,7 +37,7 @@ namespace ServerPhB.Controllers
 
         [HttpGet("view-orders")]
         [Authorize]
-        public async Task<IActionResult> ViewOrderListAsync()
+        public async Task<IActionResult> ViewOrderList()
         {
             var pendingOrders = await _orderService.GetOrdersByStatus("pending");
 
