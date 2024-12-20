@@ -23,7 +23,7 @@ namespace ServerPhB.Controllers
         [HttpPost("assign-order")]
         public IActionResult AssignOrderToSalon([FromBody] Order assignment)
         {
-            // TODO: Implement this method
+            // TODO: Implement this method IF NEEDED
             return Ok();
         }
 
@@ -31,7 +31,7 @@ namespace ServerPhB.Controllers
         [Authorize]
         public IActionResult TrackOrder(int orderId)
         {
-            // TODO: Implement this method
+            // TODO: Implement this method IF NEEDED
             return Ok();
         }
 
