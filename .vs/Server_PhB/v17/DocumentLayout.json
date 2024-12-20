@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dimos\\Server_YouPhoto\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8D92BDAA-5723-4CD1-B73C-071808FDC535}|ServerPhB\\ServerPhB.csproj|c:\\users\\dimos\\server_youphoto\\serverphb\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D92BDAA-5723-4CD1-B73C-071808FDC535}|ServerPhB\\ServerPhB.csproj|solutionrelative:serverphb\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D92BDAA-5723-4CD1-B73C-071808FDC535}|ServerPhB\\ServerPhB.csproj|c:\\users\\dimos\\server_youphoto\\serverphb\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D92BDAA-5723-4CD1-B73C-071808FDC535}|ServerPhB\\ServerPhB.csproj|solutionrelative:serverphb\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D92BDAA-5723-4CD1-B73C-071808FDC535}|ServerPhB\\ServerPhB.csproj|c:\\users\\dimos\\server_youphoto\\serverphb\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D92BDAA-5723-4CD1-B73C-071808FDC535}|ServerPhB\\ServerPhB.csproj|solutionrelative:serverphb\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\dimos\\Server_YouPhoto\\ServerPhB\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "ServerPhB\\Services\\OrderService.cs",
+              "ToolTip": "C:\\Users\\dimos\\Server_YouPhoto\\ServerPhB\\Services\\OrderService.cs",
+              "RelativeToolTip": "ServerPhB\\Services\\OrderService.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAA5wDEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T10:07:58.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\dimos\\Server_YouPhoto\\ServerPhB\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "ServerPhB\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\dimos\\Server_YouPhoto\\ServerPhB\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "ServerPhB\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAAAKYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T10:01:16.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ManagerController.cs",
+              "DocumentMoniker": "C:\\Users\\dimos\\Server_YouPhoto\\ServerPhB\\Controllers\\ManagerController.cs",
+              "RelativeDocumentMoniker": "ServerPhB\\Controllers\\ManagerController.cs",
+              "ToolTip": "C:\\Users\\dimos\\Server_YouPhoto\\ServerPhB\\Controllers\\ManagerController.cs",
+              "RelativeToolTip": "ServerPhB\\Controllers\\ManagerController.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAqwCkAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T10:01:13.903Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
