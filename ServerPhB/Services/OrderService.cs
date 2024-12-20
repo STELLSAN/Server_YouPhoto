@@ -43,5 +43,10 @@ namespace ServerPhB.Services
         {
             return _context.Orders.FirstOrDefault(o => o.OrderID == orderId);
         }
+
+        public async Task<List<Order>> GetOrdersByStatus(string status)
+        {
+            return await _context.Orders.Where(o => o.Status == status).ToListAsync();
+        }
     }
 }

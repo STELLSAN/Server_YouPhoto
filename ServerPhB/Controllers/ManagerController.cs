@@ -1,8 +1,11 @@
 using System;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ServerPhB.Models;
 using ServerPhB.Services;
+using OrderService = ServerPhB.Services.OrderService;
 
 namespace ServerPhB.Controllers
 {
@@ -34,10 +37,25 @@ namespace ServerPhB.Controllers
 
         [HttpGet("view-orders")]
         [Authorize]
-        public IActionResult ViewOrderList()
+        public async Task<IActionResult> ViewOrderList()
         {
-            // TODO: Implement this method
-            return Ok();
+            var pendingOrders = await _orderService.GetOrdersByStatus("pending");
+
+            var orderDtos = pendingOrders.Select(order => new OrderDto
+            {
+                OrderID = order.OrderID,
+                DateCreated = order.DateCreated,
+                Status = order.Status,
+                ClientID = order.ClientID,
+                DeliveryMethodID = order.DeliveryMethodID,
+                Address = order.Address,
+                DecorationOptionID = order.DecorationOptionID,
+                Comments = order.Comments,
+                TotalPrice = order.TotalPrice,
+                Quantity = order.Quantity
+            }).ToList();
+
+            return Ok(orderDtos);
         }
     }
 }
