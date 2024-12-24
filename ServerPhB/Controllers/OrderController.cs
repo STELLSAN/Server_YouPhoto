@@ -80,15 +80,27 @@ namespace ServerPhB.Controllers
         public async Task<IActionResult> UpdateOrder([FromForm] UpdateOrderRequest request)
         {
             var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = int.Parse(User.FindFirstValue(ClaimTypes.Role));
+
             if (clientId == null)
             {
                 return Unauthorized(new { message = "Invalid token" });
             }
 
             var order = _orderService.GetOrderById(request.OrderID);
-            if (order == null || order.ClientID != clientId)
+            if (order == null)
             {
-                return NotFound(new { message = "Order not found or you do not have permission to update this order" });
+                return NotFound(new { message = "Order not found" });
+            }
+
+            // Allow users with role 1 (Manager) or the Client themself to update any order
+
+            if (order.ClientID != clientId)
+            {
+                if (userRole != 1)
+                {
+                    return Forbid(new { message = "You do not have permission to update this order" });
+                }
             }
 
             // Update the fields
@@ -120,6 +132,11 @@ namespace ServerPhB.Controllers
 
             _orderService.UpdateOrder(order);
             return Ok(new { message = "Order updated successfully" });
+        }
+
+        private IActionResult Forbid(object value)
+        {
+            throw new NotImplementedException();
         }
 
         [HttpGet("track/{orderId}")]
