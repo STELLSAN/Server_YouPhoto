@@ -22,7 +22,8 @@ namespace ServerPhB.Controllers
         [HttpGet("fetch-delivery-methods")]
         public async Task<ActionResult<IEnumerable<DeliveryMethod>>> GetDeliveryMethods()
         {
-            return await _context.DeliveryMethods.ToListAsync();
+            var deliveryMethods = await _context.DeliveryMethods.ToListAsync();
+            return Ok(deliveryMethods);
         }
     }
 }
