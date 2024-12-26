@@ -70,7 +70,16 @@ namespace ServerPhB.Services
 
         public async Task<(string token, string refreshToken)> RefreshToken(string token)
         {
-            var principal = GetPrincipalFromExpiredToken(token);
+            ClaimsPrincipal principal;
+            try
+            {
+                principal = GetPrincipalFromExpiredToken(token);
+            }
+            catch (SecurityTokenException)
+            {
+                return (null, null);
+            }
+
             var username = principal.Identity.Name;
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
 
@@ -98,14 +107,21 @@ namespace ServerPhB.Services
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
-            var jwtSecurityToken = securityToken as JwtSecurityToken;
-            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            try
+            {
+                var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+                var jwtSecurityToken = securityToken as JwtSecurityToken;
+                if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new SecurityTokenException("Invalid token");
+                }
+
+                return principal;
+            }
+            catch (Exception)
             {
                 throw new SecurityTokenException("Invalid token");
             }
-
-            return principal;
         }
 
         internal string GenerateRefreshToken()
