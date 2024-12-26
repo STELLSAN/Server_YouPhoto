@@ -271,5 +271,133 @@ namespace ServerPhB.Tests
             Assert.AreEqual("test@example.com", user.Email);
             Assert.AreEqual("1234567890", user.Phone);
         }
+
+        [Test]
+        public void Authentication_CanSetAndGetProperties()
+        {
+            var auth = new Authentication
+            {
+                Token = "test-token",
+                ExpirationDate = new DateTime(2024, 12, 31)
+            };
+
+            Assert.AreEqual("test-token", auth.Token);
+            Assert.AreEqual(new DateTime(2024, 12, 31), auth.ExpirationDate);
+        }
+
+        [Test]
+        public void Client_CanSetAndGetProperties()
+        {
+            var client = new Client
+            {
+                Name = "John Doe",
+                Email = "john.doe@example.com",
+                Phone = "123-456-7890"
+            };
+
+            Assert.AreEqual("John Doe", client.Name);
+            Assert.AreEqual("john.doe@example.com", client.Email);
+            Assert.AreEqual("123-456-7890", client.Phone);
+        }
+
+        [Test]
+        public void DatabaseHandler_PrivateConnectionStringCannotBeTested()
+        {
+            Assert.Pass("No public getter or setter available for ConnectionString.");
+        }
+
+        [Test]
+        public void DecorationOption_CanSetAndGetProperties()
+        {
+            var option = new DecorationOption
+            {
+                DecorationOptionID = 1,
+                Name = "Balloons",
+                Description = "Colorful balloons for decoration.",
+                Cost = 50
+            };
+
+            Assert.AreEqual(1, option.DecorationOptionID);
+            Assert.AreEqual("Balloons", option.Name);
+            Assert.AreEqual("Colorful balloons for decoration.", option.Description);
+            Assert.AreEqual(50, option.Cost);
+        }
+
+        [Test]
+        public void Manager_CanSetAndGetProperties()
+        {
+            var manager = new Manager
+            {
+                Name = "Jane Smith",
+                Email = "jane.smith@example.com",
+                Phone = "987-654-3210"
+            };
+
+            Assert.AreEqual("Jane Smith", manager.Name);
+            Assert.AreEqual("jane.smith@example.com", manager.Email);
+            Assert.AreEqual("987-654-3210", manager.Phone);
+        }
+
+        [Test]
+        public void OrderItem_CanSetAndGetProperties()
+        {
+            var orderItem = new OrderItem
+            {
+                OrderItemID = 10,
+                OrderID = 20,
+                DecorationOptions = 5,
+                Quantity = 100
+            };
+
+            Assert.AreEqual(10, orderItem.OrderItemID);
+            Assert.AreEqual(20, orderItem.OrderID);
+            Assert.AreEqual(5, orderItem.DecorationOptions);
+            Assert.AreEqual(100, orderItem.Quantity);
+        }
+
+        [Test]
+        public void OrderService_CanSetAndGetProperties()
+        {
+            var service = new OrderService
+            {
+                OrderServiceID = 42
+            };
+
+            Assert.AreEqual(42, service.OrderServiceID);
+        }
+
+        [Test]
+        public void OrderUpdate_CanSetAndGetProperties()
+        {
+            var update = new OrderUpdate
+            {
+                UpdateID = 101,
+                OrderID = 202,
+                Status = "In Progress"
+            };
+
+            Assert.AreEqual(101, update.UpdateID);
+            Assert.AreEqual(202, update.OrderID);
+            Assert.AreEqual("In Progress", update.Status);
+        }
+
+        [Test]
+        public void Salon_CanSetAndGetProperties()
+        {
+            var salon = new Salon
+            {
+                SalonID = 1,
+                Name = "Luxury Salon",
+                Address = "123 Main Street",
+                EquipmentList = new List<Equipment> { new Equipment(), new Equipment() }
+            };
+
+            Assert.AreEqual(1, salon.SalonID);
+            Assert.AreEqual("Luxury Salon", salon.Name);
+            Assert.AreEqual("123 Main Street", salon.Address);
+            Assert.AreEqual(2, salon.EquipmentList.Count);
+        }
+
+
     }
 }
