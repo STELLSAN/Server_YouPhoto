@@ -40,8 +40,8 @@ namespace ServerPhB.Tests
                 var deliveryMethods = context.DeliveryMethods.ToList();
 
                 Assert.AreEqual(2, deliveryMethods.Count);
-                Assert.IsTrue(deliveryMethods.Any(dm => dm.DeliveryMethodID == 1 && dm.Name == "Äîñòàâêà" && dm.Cost == 500));
-                Assert.IsTrue(deliveryMethods.Any(dm => dm.DeliveryMethodID == 2 && dm.Name == "Ñàìî-âûâîç" && dm.Cost == 0));
+                Assert.IsTrue(deliveryMethods.Any(dm => dm.DeliveryMethodID == 1 && dm.Name == "Ð”Ð¾ÑÑ‚Ð°Ð²ÐºÐ°" && dm.Cost == 500));
+                Assert.IsTrue(deliveryMethods.Any(dm => dm.DeliveryMethodID == 2 && dm.Name == "Ð¡Ð°Ð¼Ð¾-Ð²Ñ‹Ð²Ð¾Ð·" && dm.Cost == 0));
             }
         }
 
