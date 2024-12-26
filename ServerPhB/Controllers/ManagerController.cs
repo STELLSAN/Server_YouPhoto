@@ -20,21 +20,6 @@ namespace ServerPhB.Controllers
             _orderService = orderService;
         }
 
-        [HttpPost("assign-order")]
-        public IActionResult AssignOrderToSalon([FromBody] Order assignment)
-        {
-            // TODO: Implement this method IF NEEDED
-            return Ok();
-        }
-
-        [HttpGet("track-order/{orderId}")]
-        [Authorize]
-        public IActionResult TrackOrder(int orderId)
-        {
-            // TODO: Implement this method IF NEEDED
-            return Ok();
-        }
-
         [HttpGet("view-orders")]
         [Authorize]
         public async Task<IActionResult> ViewOrderList()
